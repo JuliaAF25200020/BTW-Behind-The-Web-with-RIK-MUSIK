@@ -1,5 +1,6 @@
-<section>
-    <h2>Form Pendaftaran</h2>
+<?=     @include 'header.php'; ?>
+<section class="container mb-5">
+    <h2 class="section-title" data-en="Form Registrations" data-id="Form Pendaftaran">Form Pendaftaran</h2>
 
     <?php if (!empty($errors)): ?>
         <?php foreach ($errors as $error): ?>
@@ -13,3 +14,4 @@
 
     <?php include 'frm_pendaftaran.php'; ?>
 </section>
+ <?php  include 'footer.php'; ?>

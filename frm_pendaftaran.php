@@ -1,25 +1,19 @@
 <form method="POST" action="sv_pendaftaran.php">
-    <label>Nama Lengkap</label>
+    <label data-en="Full Name" data-id="Nama Lengkap">Nama Lengkap</label>
     <input type="text" name="nama" placeholder="Masukkan nama lengkap">
 
     <label>Email</label>
-    <input type="email" name="email" placeholder="contoh@email.com">
+    <input type="email" name="email" placeholder="johndoe@email.com">
 
-    <label>Nomor WhatsApp</label>
+    <label>WhatsApp</label>
     <input type="text" name="wa" placeholder="08123456789">
 
-    <label>Pilih Kelas</label>
-    <select name="kelas">
-        <option value="">-- Pilih Kelas --</option>
-        <?php foreach ($kelasList as $namaKelas => $harga): ?>
-            <option value="<?= htmlspecialchars($namaKelas) ?>">
-                <?= htmlspecialchars($namaKelas) ?> - Rp<?= number_format($harga, 0, ',', '.') ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Masukkan password">
 
-    <label>Jumlah Peserta</label>
-    <input type="number" name="jumlah" min="1" value="1">
+   
 
-    <button type="submit" name="daftar">Daftar Sekarang</button>
+    <button class="form-control btn" type="submit" style="background-color: var(--brand-gold); font-weight: bold;" name="daftar" data-id='Daftar' data-en='Register'>Daftar</button>
+    <a href='login.php' style='color: black' data-id='Sudah ada akun? Masuk sekarang!' data-en='Already have an account? Login now!'>Sudah ada akun? Masuk sekarang!</a>
+
 </form>

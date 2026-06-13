@@ -16,35 +16,38 @@
             position: sticky; top: 0; z-index: 1000; height: 80px;
 
         }
-        li a:active {
-            color: gold;
-
-        }
+        
         .logo-section { display: flex; align-items: center; gap: 12px; min-width: 150px; }
         .logo-section img { height: 45px;}
         
         .search-wrapper { 
             flex: 0.5; 
+            
             position: relative; 
             display: flex; 
             align-items: center; 
         }
         .search-wrapper input {
+          margin-top: 20px;
             width: 100%; padding: 12px 15px 12px 45px;
             border-radius: 30px; border: none; background: #222;
             color: white; font-size: 0.9rem; outline: none; transition: 0.3s;
         }
         .search-wrapper input:focus { background: #333; box-shadow: 0 0 0 2px var(--brand-gold); }
-        .search-wrapper i { position: absolute; left: 18px; color: #888; font-size: 1rem; }
+        .search-wrapper i { position: absolute; left: 18px; color: #888; font-size: 1rem;           margin-top: 20px;
+}
 
-        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-right { display: flex; align-items: bottom; gap: 20px;           margin-top: 20px;
+ }
         .nav-links { list-style: none; display: flex; gap: 15px; }
         .nav-links a { color: #fff; text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
         .nav-links a:hover { color: gold; text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+        .nav-links a.active { color: gold; text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
 
         .lang-btn {
             background: var(--brand-gold); border: none; padding: 5px 10px; 
             border-radius: 5px; cursor: pointer; font-weight: 800; font-size: 0.7rem;
+            margin-bottom: 20px;
         }
 
         .hero {
@@ -79,7 +82,17 @@
        
         .section { padding: 60px 8%; }
         .section-title { font-weight: 800; text-transform: uppercase; margin-bottom: 30px; font-size: 1.8rem; border-left: 6px solid var(--brand-gold); padding-left: 15px; }
-    
+        .title-row {
+    display: flex;
+    align-items: center; /* vertical alignment */
+    gap: 8px;            /* space between h2 and icon */
+}
+
+.title-row .material-symbols-outlined {
+    font-size: 32px;
+    cursor: pointer;
+    margin-bottom: 32px;
+}
         .slider-container { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-gold) transparent; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
 
@@ -97,9 +110,13 @@
         .btn-order { background: var(--brand-dark); color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: 0.3s; }
         .btn-order:hover { background: var(--brand-gold); color: black; }
 
+        
+
         .visi-misi { background: #f9f9f9; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 80px 8%; }
-        .box-vm { padding: 30px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        .box-vm { padding: 30px; background: white; border: 1px solid white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;}
         .box-vm h3 { color: var(--brand-gold); margin-bottom: 15px; text-transform: uppercase; }
+                .box-vm:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--brand-gold); }
 
         .contact-grid { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px; }
         .map-box { flex: 1.5; min-width: 300px; border-radius: 15px; overflow: hidden; border: 2px solid #eee; }
