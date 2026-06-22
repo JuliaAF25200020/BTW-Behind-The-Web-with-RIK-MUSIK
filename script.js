@@ -49,13 +49,15 @@ pesaninput.setAttribute('placeholder', 'Message');
         // --- SEARCH AKTIF ---
         const searchInput = document.getElementById('searchInput');
         const cards = document.querySelectorAll('.product-card');
-
         searchInput.addEventListener('input', () => {
-            const val = searchInput.value.toLowerCase();
-            cards.forEach(card => {
-                const text = card.querySelector('h4').innerText.toLowerCase();
-                card.style.display = text.includes(val) ? "flex" : "none";
-            });
+        const val = searchInput.value.toLowerCase();
+        cards.forEach(card => {
+        const text = card.querySelector('h4').innerText.toLowerCase();
+        const col = card.closest('.col-md-3');
+        col.style.display = text.includes(val)
+            ? ''
+            : 'none';
+        });
         });
 
         function pesanWA(p) {
