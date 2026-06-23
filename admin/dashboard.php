@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 // include "security.php";
 @include "header.php";
 
@@ -57,6 +58,12 @@ echo "welcome, ".$username;
       </ul>
     </div>
   </div>
+=======
+include "security.php";
+
+echo "welcome, ".$username;
+?>
+>>>>>>> b549aba (cart, login, register)
 <br>
 <a href="courses/index.php">manajemen kelas</a>
 <br>
