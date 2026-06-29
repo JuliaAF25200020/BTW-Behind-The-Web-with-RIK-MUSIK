@@ -258,5 +258,5 @@
   </button>
 
 </div>    
-    </section>
-  <?=     @include 'footer.php'; ?>
+    </section>  
+  <?php    include 'footer.php'; ?>
