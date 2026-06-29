@@ -47,4 +47,4 @@ We have experienced and trusted professionals who can handle a wide range of mus
             </div>
         </div>
     </section>
-    <?=     @include 'footer.php'; ?>
+    <?php    include 'footer.php'; ?>
