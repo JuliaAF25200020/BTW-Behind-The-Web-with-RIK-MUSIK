@@ -11,5 +11,4 @@ include "header.php";
     </form>
     <a href='pendaftaran.php' style='color: black' date-en='Don't have an account? Register now!' data-in='Belum ada akun? Daftar sekarang!'>Belum ada akun? Daftar sekarang!</a>
 </section>
-<?php
-include "footer.php";
+<?php    include 'footer.php'; ?>
