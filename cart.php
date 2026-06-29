@@ -60,7 +60,4 @@ do_not_disturb_on
         </div>
     </section>
 
-<?php
-include "footer.php";
-
-?>
+        <?php    include 'footer.php'; ?>
