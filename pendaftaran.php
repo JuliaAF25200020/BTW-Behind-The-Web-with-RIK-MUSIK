@@ -14,4 +14,4 @@
 
     <?php include 'frm_pendaftaran.php'; ?>
 </section>
- <?php  include 'footer.php'; ?>
+    <?php    include 'footer.php'; ?>
