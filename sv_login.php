@@ -1,20 +1,25 @@
 <?php
 session_start();
-
 include "koneksi.php";
 
-$username = $_POST['username'];
-$password = md5($_POST['password']); //enkripsi pakai md5
+$username=mysqli_real_escape_string($conn,$_POST['username']);
+$password = md5($_POST['password']);
 
-$sql = "select * from users where username='$username' and password='$password'";
-$query = mysqli_query($conn,$sql);
-$num = mysqli_num_rows($query);
+$query = mysqli_query($conn,"SELECT * FROM users WHERE username='$username' AND password='$password'");
 
-if($num > 0){
-    header("Location: admin/dashboard.php");
-    exit;
+if(mysqli_num_rows($query) > 0){
+    $data = mysqli_fetch_assoc($query);
+
+    $_SESSION['id'] = $data['id'];
+    $_SESSION['username'] = $data['username'];
+    $_SESSION['role'] = $data['role'];
+
+    if($data['role'] == "admin"){
+        header("Location: admin/index.php");
+    }else{
+        header("Location: profile.php");
+    }
 }else{
-    header("Location: login.php");
-    exit;
+    echo "<script>alert('Username atau Password salah'); window.location='login.php'; </script>";
 }
 ?>

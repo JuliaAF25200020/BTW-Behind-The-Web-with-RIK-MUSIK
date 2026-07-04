@@ -1,4 +1,9 @@
-<?php  include 'header.php'; ?>
+<?php  include 'header.php'; 
+include "koneksi.php";
+$new_arrivals = mysqli_query($conn,"SELECT * FROM products WHERE new_arrivals='1'");
+$best_sellers = mysqli_query($conn,"SELECT * FROM products WHERE best_seller='1'");
+
+?>
   <header id="home" class="hero">
         <h1 id="heroText">Expert in <br> <span style="color: var(--brand-gold);">Musical</span> <br> Instruments</h1>
     </header>
@@ -22,83 +27,104 @@
     <section id="products" class="section">
         <h2 class="section-title" data-en="Best Sellers" data-id="Paling Laris">Paling Laris</h2>
 <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-  
-  <div class="carousel-inner">
+    <div class="carousel-inner">
 
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-      <div class="row text-center">
+<?php
+$count = 0;
 
-        <div class="col-md-3">
-          <div class="product-card"> 
-            <img src="images/electric/Gitar Elektrik LTD EC-256 Black Satin.jfif" alt="LTD"> 
-            <h4>Gitar Elektrik LTD EC-256 Black Satin</h4> 
-            <span class="price">Rp 6.800.000</span> 
-            <button class="btn-order" onclick="pesanWA('LTD EC-256')">WA</button> 
-        </div>
-        </div>
+while($row = mysqli_fetch_assoc($best_sellers)) {
 
-        <div class="col-md-3">
-          <div class="product-card"> 
-            <img src="images/electric/Cort CR250 Vintage Burst Electric.jpg" alt="Cort">
-            <h4>Cort CR250 Vintage Burst Electric</h4> 
-            <span class="price">Rp 4.250.000</span> 
-            <button class="btn-order" onclick="pesanWA('Cort CR250')">WA</button> 
-        </div>
-        </div>
-<div class="col-md-3">
+   
+    if($count % 4 == 0){
+        ?>
+        <div class="carousel-item <?php echo ($count == 0) ? 'active' : ''; ?>">
+            <div class="row text-center">
+        <?php
+    }
+?>
+
+    <div class="col-md-3">
         <div class="product-card">
-                <img src="images/acoustic/Gitar akustik fs100c ORIGINAL YAMAHA Hitam.png" alt="Cort Bass">
-                <h4>Gitar akustik fs100c ORIGINAL YAMAHA Hitam</h4>
-                <span class="price">Rp 1.898.999</span>
-                <button class="btn-order" onclick="pesanWA('Cort Action Bass')">WA</button>
-            </div>
+            <img src="data:image/jpeg;base64,<?php echo base64_encode($row['images']); ?>" alt="<?php echo $row['name_product']; ?>">
+
+            <h4><?php echo $row['name_product']; ?></h4>
+
+            <span class="price">
+                Rp <?php echo number_format($row['price'],0,',','.'); ?>
+            </span>
+            <p style="color: rgb(70, 214, 70); " data-en="available" data-id="tersedia"><?php echo $row['stock']; ?></p>
+
+           <div class="row g-2 align-items-center ">    
+                
+                <button class="btn-order col-9" onclick="pesanWA('<?php echo $row['name_product']; ?>')" >WA</button>
+               <div class="col-3">
+                 <?php
+                if(isset($_SESSION['id'])){
+                ?>
+                  <a href="add_cart.php?id=<?= $row['id_product']; ?>" style="color: black;">
+                    <span class="material-symbols-outlined" style="font-size: 32px;">
+                        add_circle
+</span>
+</a>
+
+<?php
+                }else{
+                ?>
+                    <a href="login.php" style="color: black;">
+                        <span class="material-symbols-outlined" style="font-size: 32px;">
+                            add_circle
+                        </span>
+                    </a>
+                <?php
+                }
+                ?>
+                <div id="qty<?= $row['id_product']; ?>" style="display:none; margin-top:10px;">
+                    <button class="btn btn-sm btn-secondary" onclick="minusCart(<?= $row['id_product']; ?>')">
+                        -
+                    </button>
+
+                    <span id="jumlah<?= $row['id_product']; ?>" style="padding:0 15px; font-weight:bold;">
+                        1
+                    </span>
+
+                    <button class="btn btn-sm btn-secondary" onclick="plusCart(<?= $row['id_product']; ?>')">
+                        +
+                    </button>
+                     
+       </div>
+</div> 
 </div>
-<div class="col-md-3">
-         <div class="product-card">
-                <img src="images/electric/Gitar elektrik lagacy stratocaster original.png" alt="Cort Bass">
-                <h4>Gitar elektrik lagacy stratocaster original</h4>
-                <span class="price">Rp 1.350.000</span>
-                <button class="btn-order" onclick="pesanWA('Gitar Elektrik Stratocaster')">WA</button>
-            </div>
-</div>
-      </div>
+</div> 
+
     </div>
 
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <div class="row text-center">
-        <div class="col-md-3">
-          <div class="product-card">
-                <img src="images/bass/Bass Ibanez GSR180 original.png" alt="Cort Bass">
-                <h4>Bass Ibanez GSR180 original</h4>
-                <span class="price">Rp 2.000.000</span>
-                <button class="btn-order" onclick="pesanWA('Yamaha F310')">WA</button>
+<?php
+    $count++;
+
+    // Close the slide after 4 items or at the last product
+    if($count % 4 == 0 || $count == mysqli_num_rows($best_sellers)){
+        ?>
             </div>
         </div>
-        <div class="col-md-3">
-          <div class="product-card">
-                <img src="images/acoustic/Gitar akustik elektrik yamaha CPX500II.png" alt="Cort Bass">
-                <h4>Gitar akustik elektrik yamaha CPX500II</h4>
-                <span class="price">Rp 2.200.000</span>
-                <button class="btn-order" onclick="pesanWA('NUX MG-300')">WA</button>
-            </div>
-        </div>
-      </div>
+        <?php
+    }
+}
+?>
+
     </div>
 
-  </div>
+    <button class="carousel-control-prev" type="button"
+        data-bs-target="#productCarousel"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
 
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon rounded-circle p-2"></span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon  rounded-circle p-2"></span>
-  </button>
-
-</div>    
+    <button class="carousel-control-next" type="button"
+        data-bs-target="#productCarousel"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
 </section>
 
 <section class="section container-visit">
@@ -154,25 +180,25 @@
            <h2 class="section-title" data-en="Category" data-id="Kategori">Kategori</h2>
 
   <div class="category-container" >
-    <a class="category-item" href="eg.html" >
+    <a class="category-item" href="eg.php" >
       <img src="images/guitar cat.webp" class="icon" alt="Guitar">
       <span>Electric Guitars</span>
     </a>
 
-  <div class="category-item">
+  <a class="category-item" href="eg.php" >
     <img src="images/acoustic/Gitar Akustik Baby Martin Hitam.png" class="icon" alt="acoustic">
-    <span>Acoutic Guitars</span>
-  </div>
+    <span>Acoustic Guitars</span>
+                </a>
 
-  <div class="category-item">
+  <a class="category-item" href="bass.php" >
     <img src="images/bass/Bass cort C4 plus.png" class="icon" alt="Basses">
     <span>Bass Guitars</span>
-  </div>
+                </a>
 
-  <div class="category-item">
-    <img src="images/NUX MG-300 Multi Modeling Effect.jpg" class="icon" alt="assecories">
-    <span>Assecories</span>
-  </div>
+  <a class="category-item" href="accessories.php" >
+    <img src="images/NUX MG-300 Multi Modeling Effect.jpg" class="icon" alt="accessories">
+    <span>Accessories</span>
+                </a>
   
   </div>
 </section>
@@ -180,83 +206,103 @@
 <section id="products" class="section">
     
         <h2 class="section-title" data-en="New Arrivals" data-id="Pendatang Baru">Pendatang Baru</h2>
-        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-  
-  <div class="carousel-inner">
+        <div id="newarrivalCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-      <div class="row text-center">
+<?php
+$count = 0;
 
-        <div class="col-md-3">
-         <div class="product-card">
-                <img src="images/electric/Gitar elektrik lagacy stratocaster original.png" alt="Cort Bass">
-                <h4>Gitar elektrik lagacy stratocaster original</h4>
-                <span class="price">Rp 1.350.000</span>
-                <button class="btn-order" onclick="pesanWA('Gitar Elektrik Stratocaster')">WA</button>
+while($row = mysqli_fetch_assoc($new_arrivals)) {
+
+    // Start a new slide every 4 items
+    if($count % 4 == 0){
+        ?>
+        <div class="carousel-item <?php echo ($count == 0) ? 'active' : ''; ?>">
+            <div class="row text-center">
+        <?php
+    }
+?>
+
+    <div class="col-md-3">
+        <div class="product-card">
+            <img src="data:image/jpeg;base64,<?php echo base64_encode($row['images']); ?>" alt="<?php echo $row['name_product']; ?>">
+
+            <h4><?php echo $row['name_product']; ?></h4>
+
+            <span class="price">
+                Rp <?php echo number_format($row['price'],0,',','.'); ?>
+            </span>
+           <p style="color: rgb(70, 214, 70); " data-en="available" data-id="tersedia"><?php echo $row['stock']; ?></p>
+
+           <div class="row g-2 align-items-center ">    
+                
+                <button class="btn-order col-9" onclick="pesanWA('<?php echo $row['name_product']; ?>')" >WA</button>
+               <div class="col-3">
+                 <?php
+                if(isset($_SESSION['id'])){
+                ?>
+                  <a href="add_cart.php?id=<?= $row['id_product']; ?>" style="color: black;">
+                    <span class="material-symbols-outlined" style="font-size: 32px;">
+                        add_circle
+</span>
+</a>
+
+<?php
+                }else{
+                ?>
+                    <a href="login.php" style="color: black;">
+                        <span class="material-symbols-outlined" style="font-size: 32px;">
+                            add_circle
+                        </span>
+                    </a>
+                <?php
+                }
+                ?>
+                <div id="qty<?= $row['id_product']; ?>" style="display:none; margin-top:10px;">
+                    <button class="btn btn-sm btn-secondary" onclick="minusCart(<?= $row['id_product']; ?>')">
+                        -
+                    </button>
+
+                    <span id="jumlah<?= $row['id_product']; ?>" style="padding:0 15px; font-weight:bold;">
+                        1
+                    </span>
+
+                    <button class="btn btn-sm btn-secondary" onclick="plusCart(<?= $row['id_product']; ?>')">
+                        +
+                    </button>
+                     
+       </div>
+</div> 
+</div>
+</div> 
+
+    </div>
+<?php
+    $count++;
+
+    // Close the slide after 4 items or at the last product
+    if($count % 4 == 0 || $count == mysqli_num_rows($new_arrivals)){
+        ?>
             </div>
         </div>
+        <?php
+    }
+}
+?>
 
-        <div class="col-md-3">
-         <div class="product-card">
-                <img src="images/acoustic/Gitar akustik fs100c ORIGINAL YAMAHA Hitam.png" alt="Cort Bass">
-                <h4>Gitar akustik fs100c ORIGINAL YAMAHA Hitam</h4>
-                <span class="price">Rp 1.898.999</span>
-                <button class="btn-order" onclick="pesanWA('Cort Action Bass')">WA</button>
-            </div>
-        </div>
-<div class="col-md-3">
-           <div class="product-card">
-                <img src="images/guitar cat.webp" alt="">
-                <h4>Gitar Elektrik Stratocaster</h4>
-                <span class="price">Rp 2.300.000</span>
-                <button class="btn-order" onclick="pesanWA('Gitar Elektrik Stratocaster')">WA</button>
-            </div>
-</div>
-<div class="col-md-3">
-         <div class="product-card">
-                <img src="images/bass/Bass cort C4 plus.png" alt="Cort Bass">
-                <h4>Bass cort C4 plus</h4>
-                <span class="price">Rp 3.500.000</span>
-                <button class="btn-order" onclick="pesanWA('Cort Action Bass')">WA</button>
-            </div>
-</div>
-      </div>
     </div>
 
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <div class="row text-center">
-        <div class="col-md-3">
-          <div class="product-card">
-                <img src="images/acoustic/Gitar akustik elektrik yamaha CPX500II.png" alt="Cort Bass">
-                <h4>Gitar akustik elektrik yamaha CPX500II</h4>
-                <span class="price">Rp 2.200.000</span>
-                <button class="btn-order" onclick="pesanWA('NUX MG-300')">WA</button>
-            </div>
-        </div>
-        <div class="col-md-3">
-           <div class="product-card">
-                <img src="images/assecories/Capo Ukulele Murah.png" alt="NUX">
-                <h4>Capo Ukulele Murah</h4>
-                <span class="price">Rp 25.000</span>
-                <button class="btn-order" onclick="pesanWA('Elixir Strings')">WA</button>
-            </div>
-        </div>
-      </div>
-    </div>
+    <button class="carousel-control-prev" type="button"
+        data-bs-target="#newarrivalCarousel"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
 
-  </div>
-
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon rounded-circle p-2"></span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon  rounded-circle p-2"></span>
-  </button>
-
-</div>    
+    <button class="carousel-control-next" type="button"
+        data-bs-target="#newarrivalCarousel"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
     </section>
-  <?=     @include 'footer.php'; ?>
+  <?php include 'footer.php'; ?>

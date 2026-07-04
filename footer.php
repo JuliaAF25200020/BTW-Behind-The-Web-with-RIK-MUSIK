@@ -1,4 +1,4 @@
- <footer>
+ <footer class="mt-auto">
         <p>© 2026 Rik Musik Pontianak</p>
     </footer>
 

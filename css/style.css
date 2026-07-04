@@ -6,8 +6,16 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--brand-white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
-        html { scroll-behavior: smooth; }
+        body { background-color: var(--brand-white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden;    height: 100%;
+    margin: 0; display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}
+        html { scroll-behavior: smooth;    height: 100%;
+    margin: 0;}
 
         nav {
             background: var(--brand-dark);
@@ -53,13 +61,20 @@
         .hero {
             height: 500px;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/man-plays-acoustic-guitar-closeup.jpg');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; padding-left: 8%; color: white;
+           min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center; padding-left: 8%; color: white;
+            
         }
+        
         .hero h1 { font-family: 'Montserrat'; font-size: 3.5rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; }
         .hero-as {
             height: 500px;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/assecories.jpg");
+                       min-height: 80vh;
+
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding-left: 8%; color: white;
         }
@@ -67,6 +82,7 @@
         .hero-ag {
             height: 500px;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/acoustic.jpg");
+           min-height: 80vh;
 
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding-left: 8%; color: white;
@@ -74,7 +90,10 @@
         .hero-ag h1 { font-family: 'Montserrat'; font-size: 3.5rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; }
         .hero-eg {
             height: 500px;
+
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/electric.jpg');
+                       min-height: 80vh;
+
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding-left: 8%; color: white;
         }
@@ -98,11 +117,11 @@
 
         .product-card {
             background: white; border: 1px solid #eee;
-            padding: 20px; border-radius: 15px; transition: 0.3s; text-align: center;
+            padding: 20px; border-radius: 15px; transition: 0.3s; text-align: center; 
             display: flex; flex-direction: column; justify-content: space-between;
         }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: var(--brand-gold); }
-        .product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+        .product-card img { width: 100%; height: 180px; object-fit: cover; margin-bottom: 15px; }
         
         .product-card h4 { font-size: 0.9rem; margin-bottom: 10px; height: 40px; overflow: hidden; }
         .product-card .price { color: #e67e22; font-weight: 800; display: block; margin-bottom: 15px; }
@@ -129,22 +148,22 @@
         .about-text h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--brand-gold); }
 
 
-        footer { background: #000; color: #666; text-align: center; padding: 40px; font-size: 0.8rem; }
+        footer { background: #000; color: #666; text-align: center; padding: 40px; font-size: 0.8rem; margin-top: auto; }
     
-.carousel-item {
+/* .carousel-item {
        width: 100%;
     height: 600px;        
     object-fit: cover;      
     object-position: center;
-}
+} */
 .black-overlay{
     filter: brightness(70%);
 }
-.caurousel-item img{
+/* .carousel-item img{
     
   height: 100%;
   object-fit: cover;
-}
+} */
   .services {
       margin-top: 15px;
     }
@@ -287,7 +306,6 @@
   }
 }
 
-.icon {
   .icon {
   width: 28px;
   height: 28px;
@@ -298,4 +316,8 @@
   object-fit: cover;
   padding: 5px;
   }
+.scrollable-menu {
+    min-width: 320px;      /* increase width */
+    max-height: 300px;
+    overflow-y: auto;
 }

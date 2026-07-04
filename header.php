@@ -1,8 +1,25 @@
 <?php
+session_start();
+include "koneksi.php";
+
+$profileLink = isset($_SESSION['id']) ? "profile.php" : "login.php";
 $current_page = basename($_SERVER['PHP_SELF']);
+
+$jumlah_cart = 0;
+
+if(isset($_SESSION['id'])){
+    $id_users = $_SESSION['id'];
+    $cart = mysqli_query($conn,"SELECT SUM(count) AS total FROM cart WHERE id_users='$id_users'");
+    $data = mysqli_fetch_assoc($cart);
+    $jumlah_cart = $data['total'];
+    if($jumlah_cart==NULL){
+        $jumlah_cart=0;
+    }
+
+}
 ?>
-<!DOCTYPE php>
-<php lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +31,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
       <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <nav>
         <div class="logo-section">
@@ -36,29 +53,60 @@ $current_page = basename($_SERVER['PHP_SELF']);
                   Produk
                    </a>
                     <ul class="dropdown-menu dropdown-menu-dark <?= ($current_page == 'eg.php' || $current_page == 'ag.php' || $current_page == 'bass.php' || $current_page == 'assecories.php') ? 'active' : '' ?>">
-                        <li><a class="dropdown-item <?= ($current_page == 'eg.php') ? 'active' : '' ?>" href="eg.php">Electric Guitars</a></li>
-                        <li><a class="dropdown-item <?= ($current_page == 'ag.php') ? 'active' : '' ?>" href="ag.php">Acoustic Guitars</a></li>
-                        <li><a class="dropdown-item <?= ($current_page == 'bass.php') ? 'active' : '' ?>" href="bass.php">Bass Guitars</a></li>
-                        <li><a class="dropdown-item <?= ($current_page == 'assecories.php') ? 'active' : '' ?>" href="assecories.php">Assecories</a></li>
+                        <li><a class="dropdown-item <?= ($current_page == 'eg.php') ? 'active' : '' ?>" href="eg.php">Gitar Elektrik</a></li>
+                        <li><a class="dropdown-item <?= ($current_page == 'ag.php') ? 'active' : '' ?>" href="ag.php">Gitar Akustik</a></li>
+                        <li><a class="dropdown-item <?= ($current_page == 'bass.php') ? 'active' : '' ?>" href="bass.php">Gitar Bass</a></li>
+                        <li><a class="dropdown-item <?= ($current_page == 'assecories.php') ? 'active' : '' ?>" href="assecories.php">Aksesoris</a></li>
                     </ul>
                 </li>
                 <li><a href="service.php" data-en="Service" data-id="Servis" class="<?= ($current_page == 'service.php') ? 'active' : '' ?>">Servis</a></li>
                 <li><a href="about.php" data-en="About" data-id="Tentang kami" class="<?= ($current_page == 'about.php') ? 'active' : '' ?>">Tentang kami</a></li>
             </ul>
-                        <span class="material-symbols-outlined"
-      onclick="window.location.href='cart.php'"
-      style="color: gold;">
-    shopping_cart
-</span>
+            <a href="cart.php" style="position:relative; text-decoration:none;">
 
-<span class="material-symbols-outlined"
-      onclick="window.location.href='login.php'"
-      style="color: gold;">
-    account_circle
-</span>
+                <span class="material-symbols-outlined"
+                style="color:gold;">
+                    shopping_cart
+                </span>
+
+                <?php
+                if($jumlah_cart>0){
+                ?>
+
+                <span
+                style="
+                position:absolute;
+                top:-8px;
+                right:-8px;
+                width:20px;
+                height:20px;
+                border-radius:50%;
+                background:red;
+                color:white;
+                font-size:12px;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                ">
+                    <?= $jumlah_cart ?>
+                </span>
+                <?php } ?>
+            </a>
+
+            <?php
+            $link = "login.php";
+
+            if(isset($_SESSION['id'])){
+                $link = "profile.php";
+            }
+            ?>
+
+            <span
+            class="material-symbols-outlined" onclick="window.location.href='<?= $link ?>'" style="color:gold;cursor:pointer;">
+            account_circle
+            </span>
 
             <button class="lang-btn" onclick="toggleLanguage()">EN / ID</button>
-
 
         </div>
     </nav>
