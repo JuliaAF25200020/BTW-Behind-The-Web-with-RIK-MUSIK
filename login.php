@@ -11,14 +11,9 @@ include "header.php";
 <button class="form-control btn" type="submit" style="background-color: var(--brand-gold); font-weight: bold;">login</button>
     </form>
     <a href='pendaftaran.php' style='color: black' date-en='Don't have an account? Register now!' data-in='Belum ada akun? Daftar sekarang!'>Belum ada akun? Daftar sekarang!</a>
-<<<<<<< HEAD
 </main>
 
 <?php
 include "footer.php";
 ?>
 
-=======
-</section>
-<?php    include 'footer.php'; ?>
->>>>>>> 48aa705a626fe62dbbf6142bcfb5bf62c7030098

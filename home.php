@@ -298,7 +298,6 @@ while($row = mysqli_fetch_assoc($new_arrivals)) {
         <span class="carousel-control-prev-icon"></span>
     </button>
 
-<<<<<<< HEAD
     <button class="carousel-control-next" type="button"
         data-bs-target="#newarrivalCarousel"
         data-bs-slide="next">
@@ -307,19 +306,3 @@ while($row = mysqli_fetch_assoc($new_arrivals)) {
 </div>
     </section>
   <?php include 'footer.php'; ?>
-=======
-  </div>
-
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon rounded-circle p-2"></span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon  rounded-circle p-2"></span>
-  </button>
-
-</div>    
-    </section>  
-  <?php    include 'footer.php'; ?>
->>>>>>> 48aa705a626fe62dbbf6142bcfb5bf62c7030098
