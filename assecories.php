@@ -71,5 +71,6 @@ $query = mysqli_query($conn,"SELECT * FROM products WHERE id_category='4'");?>
             </div>
     </section>
 
+   <?php    include 'footer.php'; ?>
 
- <?php     include 'footer.php'; ?>
+

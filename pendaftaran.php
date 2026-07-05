@@ -17,9 +17,14 @@ $errors = [];
     <?php endif; ?>
 
     <?php include 'frm_pendaftaran.php'; ?>
+<<<<<<< HEAD
     <br>
         <a href='login.php' style='color: black' date-en='Already have an account? Login now!' data-in='Sudah ada akun? Masuk sekarang!'>Sudah ada akun? Masuk sekarang!</a>
 
 </main>
  <?php  include 'footer.php'; ?>
  
+=======
+</section>
+    <?php    include 'footer.php'; ?>
+>>>>>>> 48aa705a626fe62dbbf6142bcfb5bf62c7030098

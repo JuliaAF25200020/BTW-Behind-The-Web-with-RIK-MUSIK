@@ -40,6 +40,7 @@ $message = "Halo, saya ingin memesan produk:\n\n";
     </h2>           
 
 
+<<<<<<< HEAD
 <?php
 $total = 0;
 
@@ -180,3 +181,6 @@ add_circle
 
 
 <?php include 'footer.php'; ?>
+=======
+        <?php    include 'footer.php'; ?>
+>>>>>>> 48aa705a626fe62dbbf6142bcfb5bf62c7030098

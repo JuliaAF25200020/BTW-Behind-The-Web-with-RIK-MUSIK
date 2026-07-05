@@ -28,4 +28,4 @@
 </div> 
 </div>
         </section>
-  <?=     @include 'footer.php'; ?>
+    <?php    include 'footer.php'; ?>
