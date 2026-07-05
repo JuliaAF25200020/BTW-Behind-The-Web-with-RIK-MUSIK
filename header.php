@@ -47,16 +47,43 @@ if(isset($_SESSION['id'])){
         <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="home.php"  data-en="Home" data-id="Beranda" class="<?= ($current_page == 'home.php') ? 'active' : '' ?>">Beranda</a></li>
-             
                 <li class="dropdown">
                   <a class=" dropdown-toggle" href="#products" data-en="Products" data-id="Produk" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Produk
                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark <?= ($current_page == 'eg.php' || $current_page == 'ag.php' || $current_page == 'bass.php' || $current_page == 'assecories.php') ? 'active' : '' ?>">
-                        <li><a class="dropdown-item <?= ($current_page == 'eg.php') ? 'active' : '' ?>" href="eg.php">Gitar Elektrik</a></li>
-                        <li><a class="dropdown-item <?= ($current_page == 'ag.php') ? 'active' : '' ?>" href="ag.php">Gitar Akustik</a></li>
-                        <li><a class="dropdown-item <?= ($current_page == 'bass.php') ? 'active' : '' ?>" href="bass.php">Gitar Bass</a></li>
-                        <li><a class="dropdown-item <?= ($current_page == 'assecories.php') ? 'active' : '' ?>" href="assecories.php">Aksesoris</a></li>
+                    <ul class="dropdown-menu dropdown-menu-dark <?= ($current_page == 'eg.php' || $current_page == 'ag.php' || $current_page == 'bass.php' || $current_page == 'accessories.php') ? 'active' : '' ?>">
+                    <li>
+                        <a class="dropdown-item <?= ($current_page == 'eg.php') ? 'active' : '' ?>"
+                        href="eg.php"
+                        data-id="Gitar Elektrik"
+                        data-en="Electric Guitar">
+                        Gitar Elektrik
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item <?= ($current_page == 'ag.php') ? 'active' : '' ?>"
+                        href="ag.php"
+                        data-id="Gitar Akustik"
+                        data-en="Acoustic Guitar">
+                        Gitar Akustik
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item <?= ($current_page == 'bass.php') ? 'active' : '' ?>"
+                        href="bass.php"
+                        data-id="Gitar Bass"
+                        data-en="Bass Guitar">
+                        Gitar Bass
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item <?= ($current_page == 'accessories.php') ? 'active' : '' ?>"
+                        href="accessories.php"
+                        data-id="Aksesoris"
+                        data-en="Accessories">
+                        Aksesoris
+                        </a>
+                    </li>
                     </ul>
                 </li>
                 <li><a href="service.php" data-en="Service" data-id="Servis" class="<?= ($current_page == 'service.php') ? 'active' : '' ?>">Servis</a></li>
@@ -110,5 +137,3 @@ if(isset($_SESSION['id'])){
 
         </div>
     </nav>
-
-  
