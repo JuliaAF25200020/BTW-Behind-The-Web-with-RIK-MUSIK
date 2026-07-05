@@ -185,7 +185,7 @@ while($row = mysqli_fetch_assoc($best_sellers)) {
       <span>Electric Guitars</span>
     </a>
 
-  <a class="category-item" href="eg.php" >
+  <a class="category-item" href="ag.php" >
     <img src="images/acoustic/Gitar Akustik Baby Martin Hitam.png" class="icon" alt="acoustic">
     <span>Acoustic Guitars</span>
                 </a>
