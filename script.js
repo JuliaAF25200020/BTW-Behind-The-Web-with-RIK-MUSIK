@@ -1,5 +1,5 @@
 
-const waNumber = "628123456789";
+const waNumber = "628565024030";
        
 
 let currentLang = localStorage.getItem("language") || "id";
