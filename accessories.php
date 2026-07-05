@@ -6,7 +6,7 @@ $query = mysqli_query($conn,"SELECT * FROM products WHERE id_category='4'");?>
         <h1 id="heroText-as">Complete <br> <span style="color: var(--brand-gold);">Your</span> <br> Instrument</h1>
     </header>
  <section class="section">
-        <h2 class="section-title" data-en="Accessories" data-id="Aksesoris">Aksesoris</h2>
+        <h2 class="section-title" data-en="Accessories" data-id="Accessories">Accessories</h2>
         <div class="product-grid" id="productGrid">
               <?php while($row=mysqli_fetch_assoc($query)){ ?>
             <div class="product-card">
