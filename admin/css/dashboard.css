@@ -1,0 +1,127 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 20px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.logo-box{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.logo{
+    width:70px;
+    margin-bottom:15px;
+}
+
+.logo-box h4{
+    color:white;
+    font-weight:700;
+}
+
+.logo-box p{
+    color:#aaa;
+    margin-top:8px;
+}
+
+.menu a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+    border-radius:10px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.menu a i{
+    width:25px;
+}
+
+.menu a:hover{
+    background:#1f1f1f;
+    color:#FFA64D;
+}
+
+.menu .active{
+    background:#1f1f1f;
+    color:#FFA64D;
+    border-left:4px solid #FFA64D;
+}
+
+.logout{
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.logout a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+    border-radius:10px;
+}
+
+.logout a:hover{
+    background:#1f1f1f;
+    color:#ff5b5b;
+}
+
+/* CONTENT */
+
+.content{
+    flex: 1;
+    margin-left: 260px;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+.wrapper{
+    display: flex;
+}
+
+.topbar{
+    background:white;
+    padding:25px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.topbar h2{
+    margin:0;
+    font-weight:700;
+}
+
+.page-content{
+    padding:35px;
+}
+
+/* Card */
+
+.card{
+    border:none;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}

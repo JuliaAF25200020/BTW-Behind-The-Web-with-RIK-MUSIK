@@ -1,0 +1,163 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:260px;
+    min-height:100vh;
+    background:#000;
+    color:#fff;
+    padding:30px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.profile-box{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.profile-box i{
+    font-size:70px;
+    color:#FFA64D;
+}
+
+.profile-box h4{
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.profile-box p{
+    color:#bdbdbd;
+    margin-top:5px;
+}
+
+.menu a{
+    display:block;
+    text-decoration:none;
+    color:white;
+    padding:14px 18px;
+    margin-bottom:10px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.menu a i{
+    width:25px;
+}
+
+.menu a:hover{
+    background:#1d1d1d;
+    color:#FFA64D;
+}
+
+.menu .active{
+    background:#1d1d1d;
+    color:#FFA64D;
+    border-left:4px solid #FFA64D;
+}
+
+.logout a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:14px 18px;
+    border-radius:10px;
+}
+
+.logout a:hover{
+    background:#1d1d1d;
+    color:#ff5b5b;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    flex:1;
+    padding:45px;
+}
+
+.content h2{
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+/* ================= CARD ================= */
+
+.card-profile{
+    background:white;
+    border:none;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.card-body{
+    padding:35px;
+}
+
+.card-title{
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.info-title{
+    color:#888;
+    font-size:14px;
+}
+
+.info-value{
+    font-size:17px;
+    font-weight:600;
+    color:#222;
+}
+
+.btn-edit{
+    background:#FFA64D;
+    color:white;
+    border:none;
+    padding:8px 20px;
+    border-radius:8px;
+    float:right;
+}
+
+.btn-edit:hover{
+    background:#ff9331;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .wrapper{
+        display:flex;
+    }
+
+    .action-btn{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-bottom:25px;
+    }
+
+    .action-btn .btn{
+        border-radius:8px;
+        padding:8px 18px;
+    }
+
+    .sidebar{
+        width:100%;
+        min-height:auto;
+    }
+
+}
