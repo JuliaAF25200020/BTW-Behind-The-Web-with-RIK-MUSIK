@@ -140,7 +140,19 @@ body{
 @media(max-width:768px){
 
     .wrapper{
-        flex-direction:column;
+        display:flex;
+    }
+
+    .action-btn{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-bottom:25px;
+    }
+
+    .action-btn .btn{
+        border-radius:8px;
+        padding:8px 18px;
     }
 
     .sidebar{

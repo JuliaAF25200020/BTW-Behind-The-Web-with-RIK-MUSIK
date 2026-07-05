@@ -60,7 +60,21 @@ $data = mysqli_fetch_assoc($query);
         <h2>Pengaturan Akun</h2>
         <div class="card card-profile">
             <div class="card-body">
-                <h4 class="card-title">Informasi Akun</h4>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="card-title mb-0">Informasi Akun</h4>
+                    
+                    <div>
+                        <a href="edit_profile.php" class="btn btn-warning me-2">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Edit
+                        </a>
+
+                        <a href="delete_account.php" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus akun? Tindakan ini tidak dapat dibatalkan.')">
+                            <i class="fa-solid fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
