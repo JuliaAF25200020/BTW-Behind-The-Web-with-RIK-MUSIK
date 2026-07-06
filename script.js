@@ -1,4 +1,3 @@
-
 const waNumber = "628565024030";
        
 let currentLang = localStorage.getItem("language") || "id";
@@ -40,15 +39,23 @@ function applyLanguage() {
     // Contact form placeholders
     const namaInput = document.getElementById("nama");
     const pesanInput = document.getElementById("pesan");
+// Register form placeholders
+    const confirmPasswordInput = document.getElementById("confirm_password");
+    const addressInput = document.getElementById("address");
+   
 
     if (namaInput) {
         namaInput.placeholder =
             currentLang === "id" ? "Nama" : "Name";
     }
 
-    if (pesanInput) {
-        pesanInput.placeholder =
-            currentLang === "id" ? "Pesan" : "Message";
+    if (confirmPasswordInput) {
+        confirmPasswordInput.placeholder =
+            currentLang === "id" ? "Konfirmasi Password" : "Confirm Password";
+    }
+    if (addressInput) {
+        addressInput.placeholder =
+            currentLang === "id" ? "Alamat" : "Address";
     }
 }
 
