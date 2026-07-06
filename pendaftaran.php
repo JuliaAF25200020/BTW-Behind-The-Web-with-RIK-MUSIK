@@ -18,8 +18,7 @@ $errors = [];
 
     <?php include 'frm_pendaftaran.php'; ?>
     <br>
-        <a href='login.php' style='color: black' date-en='Already have an account? Login now!' data-in='Sudah ada akun? Masuk sekarang!'>Sudah ada akun? Masuk sekarang!</a>
+        <a href='login.php' style='color: black' data-en='Already have an account? Login now!' data-id='Sudah ada akun? Masuk sekarang!'>Sudah ada akun? Masuk sekarang!</a>
 
 </main>
  <?php  include 'footer.php'; ?>
- 
